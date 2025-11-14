@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:DormApp.ViewModels"
+        x:Class="DormApp.Views.MainWindow"
+        Title="DormApp — Гуртожиток"
+        Width="1100" Height="600"
+        mc:Ignorable="d">
+  <Design.DataContext>
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+
+  <Grid RowDefinitions="Auto,Auto,*,Auto" ColumnDefinitions="*,350">
+    <!-- Верхня панель: вибір файлу, парсер -->
+    <StackPanel Orientation="Horizontal" Margin="8" Grid.ColumnSpan="2">
+      <Button Name="BtnLoadFile" Content="Завантажити XML" Margin="2" Click="BtnLoadFile_Click"/>
+      <TextBlock Text="Файл: " VerticalAlignment="Center" Margin="8,0,0,0"/>
+      <TextBlock Name="TxtFilePath" VerticalAlignment="Center" Text="(не завантажено)"/>
+      <TextBlock Text="   Парсер: " VerticalAlignment="Center" Margin="16,0,0,0"/>
+      <ComboBox Name="CmbStrategy" Width="180" SelectedIndex="0" Margin="2">
+        <ComboBoxItem Content="XmlReader (SAX-like)"/>
+        <ComboBoxItem Content="XmlDocument (DOM)"/>
+        <ComboBoxItem Content="LINQ to XML"/>
+      </ComboBox>
+
+      <Button Name="BtnTransform" Content="Перетворити в HTML" Margin="12,0,0,0" Click="BtnTransform_Click"/>
+      <Button Name="BtnClear" Content="Очистити" Margin="8,0,0,0" Click="BtnClear_Click"/>
+    </StackPanel>
+
+    <!-- Параметри пошуку -->
+    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="8" Spacing="8">
+      <TextBlock Text="Атрибут для пошуку:" VerticalAlignment="Center"/>
+      <ComboBox Name="CmbAttribute" Width="180" SelectionChanged="CmbAttribute_SelectionChanged"/>
+      <TextBlock Text="Значення (вибір):" VerticalAlignment="Center"/>
+      <ComboBox Name="CmbAttributeValue" Width="200"/>
+      <TextBlock Text="Ключове слово:" VerticalAlignment="Center"/>
+      <TextBox Name="TxtKeyword" Width="200"/>
+      <Button Name="BtnSearch" Content="Search" Click="BtnSearch_Click" Margin="8,0,0,0"/>
+    </StackPanel>
+
+    <!-- Основна частина: результати і інформація про запис -->
+    <TextBox Name="TxtResults" Grid.Row="2" Margin="8" Grid.Column="0" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True"/>
+    <StackPanel Grid.Row="2" Grid.Column="1" Margin="8">
+      <TextBlock Text="Інформація:" FontWeight="Bold" Margin="0,0,0,6"/>
+      <TextBlock Name="TxtInfo" Text="(інформація з'явиться тут)" TextWrapping="Wrap"/>
+      <Separator Margin="0,8,0,8"/>
+      <TextBlock Text="Демонстраційний XML (Resources/dorm.xml) і XSL (Resources/dorm.xsl) включені." TextWrapping="Wrap"/>
+      <Button Content="Зберегти результат як .txt" Margin="0,8,0,0" Click="BtnSaveResults_Click"/>
+      <Button Content="Вихід" Margin="0,8,0,0" Click="BtnExit_Click"/>
+    </StackPanel>
+
+    <!-- Нижня панель (підказки) -->
+    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="8" Grid.ColumnSpan="2">
+      <TextBlock Text="Підказка: спочатку Load XML → вибрати атрибут та значення → Search. Щоб перетворити в HTML — Transform → HTML."/>
+    </StackPanel>
+  </Grid>
+</Window>

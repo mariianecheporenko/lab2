@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DormResidents>
+  <Resident id="r001" room="101" faculty="Computer Science" movedIn="2024-09-01">
+    <FullName>Іваненко Іван Іванович</FullName>
+    <Department>Інформатика</Department>
+    <Chair>Програмування</Chair>
+    <Course>2</Course>
+  </Resident>
+
+  <Resident id="r002" room="102" faculty="Mathematics" movedIn="2024-08-20" scholarship="yes">
+    <FullName>Петренко Олена Сергіївна</FullName>
+    <Department>Математика</Department>
+    <Chair>Алгебра</Chair>
+    <Course>3</Course>
+  </Resident>
+
+  <Resident id="r003" room="103" faculty="Computer Science">
+    <FullName>Сидоренко Марія Олегівна</FullName>
+    <Department>Кібербезпека</Department>
+    <Chair>Безпека</Chair>
+    <Course>1</Course>
+  </Resident>
+
+  <!-- Демонстрація різної кількості атрибутів у різних Resident -->
+  <Resident id="r004" room="201" faculty="Physics" movedIn="2023-09-10" notes="exchange student">
+    <FullName>Гнатюк Павло</FullName>
+    <Department>Фізика</Department>
+    <Chair>Електроніка</Chair>
+    <Course>4</Course>
+  </Resident>
+</DormResidents>
