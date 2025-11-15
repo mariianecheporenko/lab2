@@ -6,6 +6,7 @@ using DormApp.Strategies;
 using System;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia;
@@ -18,6 +19,16 @@ namespace DormApp.Views
         private readonly XmlProcessor _processor = new XmlProcessor();
         private string _currentXmlPath = "";
 
+        private readonly Dictionary<string, string> _attributeLocalization = new Dictionary<string, string>
+        {
+            { "faculty", "Факультет" },
+            { "room", "Кімната" },
+            { "FullName", "ПІБ" },
+            { "Department", "Спеціальність" },
+            { "Chair", "Кафедра" },
+            { "Course", "Курс" }
+        
+        };
         public MainWindow()
         {
             InitializeComponent();
@@ -57,12 +68,13 @@ namespace DormApp.Views
                 {
                     // Заповнюємо список атрибутів (динамічно)
                     var attributes = _processor.GetAttributeNames(_currentXmlPath);
+                    var localizedAttributes = attributes
+                        .Select(attr => _attributeLocalization.GetValueOrDefault(attr, attr))
+                        .ToList();
+                    CmbAttribute.ItemsSource = localizedAttributes;
 
-                    CmbAttribute.ItemsSource = attributes;
+                    CmbAttribute.SelectedIndex = localizedAttributes.Any() ? 0 : -1;
 
-                    CmbAttribute.SelectedIndex = attributes.Any() ? 0 : -1;
-
-                    // Лог
                     TxtInfo.Text = $"Знайдено атрибутів: {attributes.Count}";
                 }
                 catch (Exception ex)
@@ -73,18 +85,32 @@ namespace DormApp.Views
             }
         }
 
+        private string GetInternalAttributeName(string? displayedName)
+        {
+            if (string.IsNullOrEmpty(displayedName)) return "";
+
+            // Шукаємо у словнику "навпаки" (за значенням)
+            return _attributeLocalization
+                       .FirstOrDefault(kvp => kvp.Value == displayedName)
+                       .Key // Якщо знайшли, повертаємо ключ (англ. "faculty")
+                   ?? displayedName; // Якщо не знайшли, повертаємо як є
+        }
+
         private void CmbAttribute_SelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
-            if (CmbAttribute.SelectedItem is string attr && !string.IsNullOrEmpty(_currentXmlPath))
+            string displayedName = CmbAttribute.SelectedItem as string ?? "";
+            string internalName = GetInternalAttributeName(displayedName);
+
+            if (!string.IsNullOrEmpty(internalName) && !string.IsNullOrEmpty(_currentXmlPath))
             {
                 try
                 {
-                    var values = _processor.GetValuesForAttribute(_currentXmlPath, attr);
+                    var values = _processor.GetValuesForAttribute(_currentXmlPath, internalName); 
 
                     CmbAttributeValue.ItemsSource = values;
                     CmbAttributeValue.SelectedIndex = values.Any() ? 0 : -1;
- 
-                    TxtInfo.Text = $"Знайдено значень для '{attr}': {values.Count}";
+        
+                    TxtInfo.Text = $"Знайдено значень для '{displayedName}': {values.Count}"; 
                 }
                 catch (Exception ex)
                 {
@@ -115,7 +141,8 @@ namespace DormApp.Views
 
             _processor.SetStrategy(strategy);
 
-            string attribute = CmbAttribute.SelectedItem as string ?? "";
+            string displayedAttribute = CmbAttribute.SelectedItem as string ?? "";
+            string attribute = GetInternalAttributeName(displayedAttribute);
             string attrValue = CmbAttributeValue.SelectedItem as string ?? "";
             string keyword = TxtKeyword.Text?.Trim() ?? "";
 
@@ -139,7 +166,7 @@ namespace DormApp.Views
                 return;
             }
 
-            // Відкрити XSL файл (користувач вибере)
+            // Відкрити XSL файл
             var ofd = new OpenFileDialog();
             ofd.Filters.Add(new FileDialogFilter() { Name = "XSL files", Extensions = { "xsl", "xslt" } });
             var res = await ofd.ShowAsync(this);

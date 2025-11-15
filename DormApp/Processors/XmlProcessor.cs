@@ -47,7 +47,18 @@ namespace DormApp.Processors
             attrs.Add("Department");
             attrs.Add("Chair");
             attrs.Add("Course");
-            return attrs.OrderBy(a => a).ToList();
+            var hiddenAttributes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                "id",
+                "notes",
+                "scholarship",
+                "movedIn" // (Теж приховаємо, бо це скоріше метадані)
+            };
+            return attrs
+                .Where(attrName => !hiddenAttributes.Contains(attrName))
+                .OrderBy(a => a)
+                .ToList();
+            
         }
 
         // Повертає всі унікальні значення для атрибута attributeName у файлі

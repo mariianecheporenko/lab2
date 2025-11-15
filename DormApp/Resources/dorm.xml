@@ -1,31 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="dormitory.xsl"?>
 <DormResidents>
-  <Resident id="r001" room="101" faculty="Computer Science" movedIn="2024-09-01">
-    <FullName>Іваненко Іван Іванович</FullName>
-    <Department>Інформатика</Department>
-    <Chair>Програмування</Chair>
+  <Resident id="r001" room="101/2" faculty="Комп'ютерних наук і Кібернетики" movedIn="2024-09-01" scholarship="yes">
+    <FullName>Коваленко Андрій Володимирович</FullName>
+    <Department>Комп'ютерні науки</Department>
+    <Chair>Кафедра теорії та технології програмування</Chair>
     <Course>2</Course>
   </Resident>
-
-  <Resident id="r002" room="102" faculty="Mathematics" movedIn="2024-08-20" scholarship="yes">
-    <FullName>Петренко Олена Сергіївна</FullName>
-    <Department>Математика</Department>
-    <Chair>Алгебра</Chair>
+  <Resident id="r002" room="101/3" faculty="Інформаційних технологій" movedIn="2023-09-01">
+    <FullName>Петренко Марія Іванівна</FullName>
+    <Department>Інженерія програмного забезпечення</Department>
+    <Chair>Кафедра інформаційних систем</Chair>
     <Course>3</Course>
   </Resident>
-
-  <Resident id="r003" room="103" faculty="Computer Science">
-    <FullName>Сидоренко Марія Олегівна</FullName>
-    <Department>Кібербезпека</Department>
-    <Chair>Безпека</Chair>
+  <Resident id="r003" room="101/2" faculty="Комп'ютерних наук і Кібернетики" movedIn="2022-09-01" scholarship="yes" notes="Пільги">
+    <FullName>Сидоренко Олексій Петрович</FullName>
+    <Department>Комп'ютерні науки</Department>
+    <Chair>Кафедра обчислювальної математики</Chair>
+    <Course>4</Course>
+  </Resident>
+  <Resident id="r004" room="102/3" faculty="Навчально-науковий інститут філології" movedIn="2024-09-01">
+    <FullName>Мельник Олена Сергіївна</FullName>
+    <Department>Англійська філологія</Department>
+    <Chair>Кафедра англійської філології та міжкультурної комунікації</Chair>
     <Course>1</Course>
   </Resident>
+  <Resident id="r005" room="201/3" faculty="Комп'ютерних наук і Кібернетики" movedIn="2024-09-01" scholarship="yes">
+    <FullName>Бойко Марина Олександрівна</FullName>
+    <Department>Кібербезпека</Department>
+    <Chair>Кафедра системного аналізу і теорії прийняття рішень</Chair>
+    <Course>2</Course>
+  </Resident>
+  <Resident id="r006" room="201/3" faculty="Географічний" movedIn="2023-09-01">
+    <FullName>Шевченко Анастасія Миколаївна</FullName>
+    <Department>туризм і рекреація</Department>
+    <Chair>Кафедра гідрології та гідроекології</Chair>
+    <Course>3</Course>
+  </Resident>
+  <Resident id="r007" room="202/2" faculty="Інформаційних технологій" movedIn="2024-09-01">
+    <FullName>Ткаченко Віктор Васильович</FullName>
+    <Department>Комп'ютерна інженерія</Department>
+    <Chair>Кафедра інформаційних систем</Chair>
+    <Course>1</Course>
+  </Resident>
+  <Resident id="r008" room="202/3" faculty="Навчально-науковий інститут філології" movedIn="2022-09-01" scholarship="yes" notes="Пільги">
+    <FullName>Іваненко Катерина Андріївна</FullName>
+    <Department>Українська філологія</Department>
+    <Chair>Кафедра української філології</Chair>
+    <Course>4</Course>
+  </Resident>
+  <Resident id="r009" room="303/2" faculty="Комп'ютерних наук і Кібернетики" movedIn="2024-09-01">
+    <FullName>Кравченко Максим Юрійович</FullName>
+    <Department>Комп'ютерні науки</Department>
+    <Chair>Кафедра моделювання складних систем</Chair>
+    <Course>2</Course>
+  </Resident>
+  <Resident id="r010" room="303/2" faculty="Географічний" movedIn="2023-09-01">
+    <FullName>Лисенко Сергій Олегович</FullName>
+    <Department>туризм і рекреація</Department>
+    <Chair>Кафедра геодезії, картографії та землеустрою</Chair>
+    <Course>3</Course>
+  </Resident>
+  <Resident id="r011" room="302/2" faculty="Комп'ютерних наук і Кібернетики" movedIn="2024-09-01" scholarship="yes">
+    <FullName>Гриценко Ігор Михайлович</FullName>
+    <Department>Комп'ютерні науки</Department>
+    <Chair>Кафедра дослідження операцій</Chair>
+    <Course>1</Course>
+  </Resident>
+  <Resident id="r012" room="302/3" faculty="Інформаційних технологій" movedIn="2022-09-01">
+    <FullName>Павленко Вікторія Дмитрівна</FullName>
+    <Department>Інженерія програмного забезпечення</Department>
+    <Chair>Кафедра інформаційних систем</Chair>
+    <Course>4</Course>
+  </Resident>
+  <Resident id="r013" room="401/2" faculty="Комп'ютерних наук і Кібернетики" movedIn="2023-09-01">
+    <FullName>Романенко Сергій Віталійович</FullName>
+    <Department>Кібербезпека</Department>
+    <Chair>Кафедра теоретичної кібернетики</Chair>
+    <Course>3</Course>
+  </Resident>
+  <Resident id="r014" room="401/3" faculty="Географічний" movedIn="2024-09-01" scholarship="yes">
+    <FullName>Савченко Ірина Володимирівна</FullName>
+    <Department>туризм і рекреація</Department>
+    <Chair>Кафедра географії України</Chair>
+    <Course>2</Course>
+  </Resident>
+  <Resident id="r015" room="402/2" faculty="Комп'ютерних наук і Кібернетики" movedIn="2024-09-01" notes="Пільги">
+    <FullName>Морозов Артем Сергійович</FullName>
+    <Department>Комп'ютерні науки</Department>
+    <Chair>Кафедра математичної інформатики</Chair>
+    <Course>1</Course>
+  </Resident>
+  <Resident id="r016" room="402/3" faculty="Навчально-науковий інститут філології" movedIn="2024-09-01">
+    <FullName>Величко Тетяна Павлівна</FullName>
+    <Department>Англійська філологія</Department>
+    <Chair>Кафедра англійської філології та міжкультурної комунікації</Chair>
+    <Course>2</Course>
+  </Resident>
+  <Resident id="r017" room="502/2" faculty="Інформаційних технологій" movedIn="2023-09-01" scholarship="yes">
+    <FullName>Козлов Олександр Ігорович</FullName>
+    <Department>Комп'ютерна інженерія</Department>
+    <Chair>Кафедра інформаційних систем</Chair>
+    <Course>3</Course>
+  </Resident>
+  <Resident id="r018" room="501/2" faculty="Навчально-науковий інститут філології" movedIn="2024-09-01">
+    <FullName>Руденко Світлана Анатоліївна</FullName>
+    <Department>Українська філологія</Department>
+    <Chair>Кафедра української філології</Chair>
+    <Course>1</Course>  
+  <Resident id="r019" room="501/2" faculty="Географічний" movedIn="2022-09-01" scholarship="yes" notes="Пільги">
+    <FullName>Литвиненко Наталія Євгенівна</FullName>
+    <Department>туризм і рекреація</Department>
+    <Chair>Кафедра гідрології та гідроекології</Chair>
+  </Resident>
+  <Resident id="r020" room="502/2" faculty="Комп'ютерних наук і Кібернетики" movedIn="2022-09-01">
+    <FullName>Захарченко Валентин Романович</FullName>
+    <Department>Комп'ютерні науки</Department>
+    <Chair>Кафедра прикладної статистики</Chair>
+    <Course>4</Course>
+  </Resident>
 
-  <!-- Демонстрація різної кількості атрибутів у різних Resident -->
-  <Resident id="r004" room="201" faculty="Physics" movedIn="2023-09-10" notes="exchange student">
-    <FullName>Гнатюк Павло</FullName>
-    <Department>Фізика</Department>
-    <Chair>Електроніка</Chair>
     <Course>4</Course>
   </Resident>
 </DormResidents>
